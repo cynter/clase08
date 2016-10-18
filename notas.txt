@@ -1,0 +1,9 @@
+php: nexo-> las clases-> usan PDO, los metodos
+utf8spanish
+
+html (patente + boton ingresar)
+|
+js(ajax-> insertar)
+|
+clase vehiculo (tiene un metodo insertar)
+
