@@ -120,7 +120,7 @@ class Persona
 			$consulta->bindValue(':nomb',$persona->nombre, PDO::PARAM_STR);
 			$consulta->bindValue(':ape', $persona->apellido, PDO::PARAM_STR);
 			$consulta->bindValue(':dni',$persona->dni, PDO::PARAM_INT);
-			$consulta->bindValue(':foto',$persona->foto, PDO::PARAM_INT);
+			$consulta->bindValue(':foto',$persona->foto, PDO::PARAM_STR);
 			$consulta->bindValue(':id',$persona->id, PDO::PARAM_INT);
 
 			return $consulta->execute();
@@ -133,7 +133,15 @@ class Persona
 //--------------------------------------------------------------------------------//
 
 	public static function Insertar($persona)
-	{
+	{		
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into persona (nombre,apellido,dni,foto)values(:nombre,:apellido,:dni,:foto)");
+				$consulta->bindValue(':nombre',$persona->nombre, PDO::PARAM_STR);
+				$consulta->bindValue(':apellido', $persona->apellido, PDO::PARAM_STR);
+				$consulta->bindValue(':dni', $persona->dni, PDO::PARAM_INT);
+				$consulta->bindValue(':foto', $persona->foto, PDO::PARAM_STR);				
+				$consulta->execute();		
+				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 		
 	
 				
